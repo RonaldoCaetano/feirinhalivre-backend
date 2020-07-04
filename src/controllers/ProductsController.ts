@@ -14,14 +14,16 @@ export default class UsersController {
 
     async show(req: Request, res: Response) {
         const {
-            params: { id },
+            query: { city },
         } = req
-        connection.query(`SELECT * FROM produtos WHERE id = '${id}'`, (err: any, result: any) => {
-            if (err) {
-                res.status(400).send(err)
-            }
-            res.status(200).send(result.rows)
-        })
+        if (city) {
+            connection.query(`SELECT * FROM produtos WHERE cidade = '${city}'`, (err: any, result: any) => {
+                if (err) {
+                    res.status(400).send(err)
+                }
+                res.status(200).send(result.rows)
+            })
+        }
     }
 
     async create(req: Request, res: Response) {

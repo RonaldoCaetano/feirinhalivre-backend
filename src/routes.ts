@@ -16,7 +16,7 @@ routes.get('/user/:phone', usersController.show)
 routes.post('/user', usersController.create)
 
 routes.get('/products', productsController.index)
-routes.get('/product/:id', productsController.show)
+routes.get('/product', productsController.show)
 routes.post('/product', productsController.create)
 
 routes.get('/categories', categoriesController.index)
