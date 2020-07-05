@@ -71,7 +71,9 @@ export default class UsersController {
             phone,
         } = req.body
 
-        const getSellerInfo = await connection.query(`SELECT * FROM vendedores WHERE telefone = '${phone}'`)
+        const getSellerInfo = await connection.query(
+            `SELECT ven.id, cid.nom_cidade FROM vendedores ven INNER JOIN cidades cid ON ven.fk_cidade = cid.id  WHERE telefone = '${phone}'`
+        )
 
         if (getSellerInfo?.rowCount > 0) {
             await connection.query(
@@ -89,7 +91,7 @@ export default class UsersController {
                     width,
                     category,
                     getSellerInfo.rows[0].id,
-                    getSellerInfo.rows[0].cidade,
+                    getSellerInfo.rows[0].nom_cidade,
                 ]
             )
 
