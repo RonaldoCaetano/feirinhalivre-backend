@@ -14,9 +14,9 @@ export default class UsersController {
 
     async show(req: Request, res: Response) {
         const {
-            params: { document },
+            params: { phone },
         } = req
-        connection.query(`SELECT * FROM vendedores WHERE cpf_cnpj = '${document}'`, (err: any, result: any) => {
+        connection.query(`SELECT * FROM vendedores WHERE telefone = '${phone}'`, (err: any, result: any) => {
             if (err) {
                 res.status(400).send(err)
             }
@@ -29,20 +29,18 @@ export default class UsersController {
             document,
             phone,
             firstName,
-            lastName,
-            corporateName,
-            fantasyName,
-            email,
-            activity,
+            lastName = '',
+            corporateName = '',
+            fantasyName = '',
+            email = '',
+            activity = '',
             city,
-            state,
-            password,
+            password = '',
         } = req.body
 
-        const getStateInfo = await connection.query(`SELECT id FROM estados WHERE sigla = $1`, [state])
         const getCityInfo = await connection.query(`SELECT * FROM cidades WHERE nom_cidade = $1`, [city])
 
-        if (getStateInfo.rowCount === 0 && getCityInfo.rowCount === 0) {
+        if (getCityInfo.rowCount === 0) {
             res.status(400).send({
                 error: 'Não encontramos nenhum local com esse nome',
             })
