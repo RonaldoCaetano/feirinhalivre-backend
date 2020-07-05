@@ -30,7 +30,8 @@ export default class UsersController {
         connection.query(
             `
             INSERT INTO clientes(cpf_cnpj, senha, telefone, nome, sobrenome, email) 
-            VALUES('${document}', '${password}', '${phone}', '${firstName}', '${lastName}', '${email}')`,
+            VALUES($1, $2, $3, $4, $5, $6)`,
+            [document, password, phone, firstName, lastName, email],
             (err: any, result: any) => {
                 if (err) {
                     res.status(400).send(err)
