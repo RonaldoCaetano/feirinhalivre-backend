@@ -1,4 +1,4 @@
-# feirinhalivre-backend
+# Feirinha Livre - Backend
 
 Backend da aplicação Feirinha Livre
 
