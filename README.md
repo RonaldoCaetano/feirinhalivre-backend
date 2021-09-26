@@ -1,13 +1,13 @@
 # Feirinha Livre - Backend
 
-Backend da aplicação Feirinha Livre
+Backend crado para a aplicação Feirinha livre
 
 ## Como usar
 
-Rode o comando `npm install` para instalação das dependências
+Rode o comando `yarn` para instalação das dependências
 
-Basta rodar o comando `npm run dev` para iniciar a compliação dos arquivos
+Basta rodar o comando `yarn dev` para iniciar a compliação dos arquivos
 
-## Informações adicionais 
+## Informações adicionais
 
 O servidor está rodando na porta 3333
